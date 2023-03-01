@@ -25,8 +25,7 @@ struct MovieDetailHeaderView: View {
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
-                        Text("\(viewModel.seasonCount) saisons" + " | " +
-                             viewModel.genres.joined(separator: " • "))
+                        Text("\(viewModel.seasonCount) saisons")
                         .foregroundColor(.white.opacity(0.6))
                         .font(.footnote)
                     }
@@ -55,7 +54,6 @@ struct MovieDetailHeaderView_Previews: PreviewProvider {
         imageURL: URL(string: "https://www.themoviedb.org/t/p/w1280/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg"),
         title: "Ant-Man and the Wasp: Quantumania",
         seasonCount: 3,
-        genres: ["Adventure", "Science Fiction", "Comedy"],
         rating: 7.8
     )
     

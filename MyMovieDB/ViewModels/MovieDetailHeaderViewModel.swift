@@ -11,6 +11,5 @@ struct MovieDetailHeaderViewModel {
     let imageURL: URL?
     let title: String
     let seasonCount: Int
-    let genres: [String]
     let rating: Float
 }

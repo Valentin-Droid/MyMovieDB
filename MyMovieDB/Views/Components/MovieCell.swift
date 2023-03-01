@@ -27,7 +27,7 @@ struct MovieCell: View {
                         Text(viewModel.title)
                             .font(.title2)
                             .fontWeight(.semibold)
-                        Text("\(viewModel.seasonCount) saisons | \(viewModel.genres.joined(separator: " • "))")
+                        Text("\(viewModel.seasonCount) saisons")
                             .foregroundColor(Color.white.opacity(0.5))
                             .font(.caption)
                             .lineLimit(1)
@@ -55,7 +55,6 @@ struct MovieCell_Previews: PreviewProvider {
         imageURL: URL(string: "https://www.themoviedb.org/t/p/w1280/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg"),
         title: "Ant-Man and the Wasp: Quantumania",
         seasonCount: 3,
-        genres: ["Adventure", "Science Fiction", "Comedy"],
         rating: 7.8,
         description: "Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible."
     )

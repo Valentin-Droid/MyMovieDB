@@ -12,7 +12,6 @@ struct MovieCellViewModel {
     let imageURL: URL?
     let title: String
     let seasonCount: Int
-    let genres: [String]
     let rating: Float
     let description: String
     
