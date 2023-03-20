@@ -10,12 +10,12 @@ import SwiftUI
 struct HomeView: View {
     
     let movieRepository = RealMovieRepository()
-    @State var medias = [Serie]()
+    @EnvironmentObject var appState: AppState
     
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach(medias) { medium in
+                ForEach(appState.series) { medium in
                     let viewModel = MovieCellViewModel(
                         imageURL: medium.imageURL,
                         title: medium.title,
@@ -23,7 +23,9 @@ struct HomeView: View {
                         rating: medium.rating,
                         description: medium.description
                     )
-                    MovieCell(viewModel: viewModel)
+                    NavigationLink(destination: DetailView(serie: medium)) {
+                        MovieCell(viewModel: viewModel)
+                    }
                 }
             }
             .navigationTitle("My Movies")
@@ -31,15 +33,23 @@ struct HomeView: View {
             .preferredColorScheme(.dark)
         }
         .onAppear(perform: {
-            MovieInteractor().getSeries { series in
-                medias = series
-            }
+            loadSeries()
         })
+    }
+    
+    func loadSeries() {
+        MovieInteractor().getSeries { series in
+            DispatchQueue.main.async {
+                appState.series = series
+            }
+        }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(AppState.preview)
     }
 }
+

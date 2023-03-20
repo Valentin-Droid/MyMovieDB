@@ -10,13 +10,11 @@ import Foundation
 class RealMovieRepository {
     
     func getPopularSerieIDs(completion: @escaping ([Int]) -> Void) {
-        let url = URL(string: "https://api.themoviedb.org/3/tv/popular?api_key=\(API_KEY)&language=fr")!
+        let url = URL(string: "https://api.themoviedb.org/3/tv/popular?api_key=\(API_KEY)&language=en-US")!
         
         var IDs = [Int]()
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
-            guard let json = self.getJSON(from: data) else { return }
-            
+        
+        JSONFetcher.fetchJSON(from: url) { json in
             let results = json["results"] as! [[String: Any]]
             
             for result in results {
@@ -25,22 +23,18 @@ class RealMovieRepository {
             }
             completion(IDs)
         }
-        task.resume()
     }
     
     func getMovieDetails(id: Int, casting: [Actor], completion: @escaping (Serie) -> Void) {
         let url = URL(string: "https://api.themoviedb.org/3/tv/\(id)?api_key=\(API_KEY)&language=en-US")!
 
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
-            guard let json = self.getJSON(from: data) else { return }
-            
+        JSONFetcher.fetchJSON(from: url) { json in
             let posterPath = json["poster_path"] as? String
             let name = json["name"] as! String
             let overview = json["overview"] as! String
             let voteAverage = json["vote_average"] as! NSNumber
             
-            // Recuperer les saisonsSerie
+            // Recuperer les saisons
             let seasonJSON = json["seasons"] as! [[String: Any]]
             var seasons = [Season]()
             for season in seasonJSON {
@@ -63,16 +57,12 @@ class RealMovieRepository {
             print(serie.imageURL ?? "pas d'image")
             completion(serie)
         }
-        task.resume()
     }
     
     func getCreditsDetails(forMovieID id: Int, completion: @escaping ([Actor]) -> Void) {
-        let url = URL(string: "https://api.themoviedb.org/3/tv/\(id)?api_key=\(API_KEY)&language=fr")!
+        let url = URL(string: "https://api.themoviedb.org/3/tv/\(id)?api_key=\(API_KEY)&language=en-US")!
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
-            guard let json = self.getJSON(from: data) else { return }
-            
+        JSONFetcher.fetchJSON(from: url) { json in
             var actors = [Actor]()
             let cast = json["cast"] as? [[String: Any]]
             for actor in cast ?? [] {
@@ -81,7 +71,7 @@ class RealMovieRepository {
                 let character = actor["character"] as! String
                 
                 let newActor = Actor(
-                    url: URL(string: "https://image.tmbd.org/t/p/w500/\(profilePath ?? "")"),
+                    url: URL(string: "https://www.themoviedb.org/t/p/w1280\(profilePath ?? "")"),
                     name: name,
                     characterName: character
                 )
@@ -89,19 +79,5 @@ class RealMovieRepository {
             }
             completion(actors)
         }
-        task.resume()
     }
-    
-    private func getJSON(from data: Data) -> [String: Any]? {
-        do {
-            let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-            return json
-        } catch {
-            print("Erreur de conversion")
-            return nil
-        }
-    }
-    
 }
- 
- 

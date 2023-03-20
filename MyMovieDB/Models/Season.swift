@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Season {
+struct Season: Identifiable {
+    let id = UUID()
     let imageURL: URL?
     let seasonNumber: Int
     let episodesCount: Int

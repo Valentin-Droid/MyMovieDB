@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Actor {
+struct Actor: Identifiable {
+    let id = UUID()
     let url: URL?
     let name: String
     let characterName: String

@@ -19,6 +19,7 @@ struct MovieDetailHeaderView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 300)
+                    .clipped()
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text(viewModel.title)
