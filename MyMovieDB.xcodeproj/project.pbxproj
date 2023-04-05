@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A729C0D129C8534100B74958 /* JSONFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A729C0D029C8534100B74958 /* JSONFetcher.swift */; };
+		A729C0D329C866FE00B74958 /* SerieMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A729C0D229C866FE00B74958 /* SerieMapper.swift */; };
+		A729C0D529C8670900B74958 /* ActorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A729C0D429C8670900B74958 /* ActorMapper.swift */; };
+		A729C0D729C8671100B74958 /* SeasonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A729C0D629C8671100B74958 /* SeasonMapper.swift */; };
+		A729C0DA29C8731D00B74958 /* RestActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A729C0D929C8731D00B74958 /* RestActor.swift */; };
+		A729C0DC29C873BC00B74958 /* RestSerie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A729C0DB29C873BC00B74958 /* RestSerie.swift */; };
 		A783FD4E29B2328D00DE7D75 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A783FD4D29B2328D00DE7D75 /* DetailView.swift */; };
 		A783FD5029B23FBF00DE7D75 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A783FD4F29B23FBF00DE7D75 /* AppState.swift */; };
 		A7A8C17129A6975E008AA975 /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A8C17029A6975E008AA975 /* MockedData.swift */; };
@@ -36,6 +41,11 @@
 
 /* Begin PBXFileReference section */
 		A729C0D029C8534100B74958 /* JSONFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFetcher.swift; sourceTree = "<group>"; };
+		A729C0D229C866FE00B74958 /* SerieMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieMapper.swift; sourceTree = "<group>"; };
+		A729C0D429C8670900B74958 /* ActorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorMapper.swift; sourceTree = "<group>"; };
+		A729C0D629C8671100B74958 /* SeasonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonMapper.swift; sourceTree = "<group>"; };
+		A729C0D929C8731D00B74958 /* RestActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestActor.swift; sourceTree = "<group>"; };
+		A729C0DB29C873BC00B74958 /* RestSerie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestSerie.swift; sourceTree = "<group>"; };
 		A783FD4D29B2328D00DE7D75 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		A783FD4F29B23FBF00DE7D75 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A7A8C17029A6975E008AA975 /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
@@ -74,6 +84,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A729C0D829C86C3900B74958 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				A729C0D229C866FE00B74958 /* SerieMapper.swift */,
+				A729C0D429C8670900B74958 /* ActorMapper.swift */,
+				A729C0D629C8671100B74958 /* SeasonMapper.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		A729C0DD29C873C800B74958 /* RestObjects */ = {
+			isa = PBXGroup;
+			children = (
+				A729C0D929C8731D00B74958 /* RestActor.swift */,
+				A729C0DB29C873BC00B74958 /* RestSerie.swift */,
+			);
+			path = RestObjects;
+			sourceTree = "<group>";
+		};
 		A7A8C17629A75C77008AA975 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				A7A8C17029A6975E008AA975 /* MockedData.swift */,
+				A729C0D029C8534100B74958 /* JSONFetcher.swift */,
 				A7A930D6299D14F700FCCF09 /* MyMovieDBApp.swift */,
 				A783FD4F29B23FBF00DE7D75 /* AppState.swift */,
 				A7A8C17A29A7668C008AA975 /* Constants.swift */,
@@ -142,7 +172,8 @@
 				A7A930FC299E1C0000FCCF09 /* ViewModels */,
 				A7A8C17E29A7F054008AA975 /* Repositories */,
 				A7A8C17F29A7F06A008AA975 /* Interactors */,
-				A729C0D029C8534100B74958 /* JSONFetcher.swift */,
+				A729C0D829C86C3900B74958 /* Mappers */,
+				A729C0DD29C873C800B74958 /* RestObjects */,
 			);
 			path = MyMovieDB;
 			sourceTree = "<group>";
@@ -263,6 +294,7 @@
 			files = (
 				A7A930D7299D14F700FCCF09 /* MyMovieDBApp.swift in Sources */,
 				A7A930F0299D48A000FCCF09 /* MovieDetailHeaderView.swift in Sources */,
+				A729C0D329C866FE00B74958 /* SerieMapper.swift in Sources */,
 				A7A930FF299E252B00FCCF09 /* Actor.swift in Sources */,
 				A7A93103299E277000FCCF09 /* Serie.swift in Sources */,
 				A7A8C17D29A7E7C7008AA975 /* MovieInteractor.swift in Sources */,
@@ -278,9 +310,13 @@
 				A7A93101299E270A00FCCF09 /* Season.swift in Sources */,
 				A783FD4E29B2328D00DE7D75 /* DetailView.swift in Sources */,
 				A7A930EC299D3F8500FCCF09 /* ActorCell.swift in Sources */,
+				A729C0D529C8670900B74958 /* ActorMapper.swift in Sources */,
+				A729C0DA29C8731D00B74958 /* RestActor.swift in Sources */,
 				A7A930F8299E19BE00FCCF09 /* SeasonCellViewModel.swift in Sources */,
+				A729C0DC29C873BC00B74958 /* RestSerie.swift in Sources */,
 				A7A8C17929A76596008AA975 /* RealMovieRepository.swift in Sources */,
 				A7A930E5299D15F000FCCF09 /* MovieCell.swift in Sources */,
+				A729C0D729C8671100B74958 /* SeasonMapper.swift in Sources */,
 				A7A930F2299E11D900FCCF09 /* MovieCellViewModel.swift in Sources */,
 				A7A8C17B29A7668C008AA975 /* Constants.swift in Sources */,
 			);
